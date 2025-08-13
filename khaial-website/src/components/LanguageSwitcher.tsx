@@ -1,11 +1,19 @@
-import { useRouter } from "next/router";
+"use client";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 const LanguageSwitcher = () => {
+  const params = useParams<{ locale: string }>();
+  const pathname = usePathname();
   const router = useRouter();
-  const isArabic = router.locale === "ar";
+  const isArabic = params?.locale === "ar";
 
   const handleSwitch = (locale: "en" | "ar") => () => {
-    router.push(router.asPath, router.asPath, { locale, scroll: false });
+    const parts = pathname?.split("/") ?? [];
+    if (parts.length > 1) {
+      parts[1] = locale;
+    }
+    const target = parts.join("/") || "/";
+    router.push(target);
   };
 
   return (

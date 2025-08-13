@@ -57,13 +57,22 @@ khaial-ai/
 │   │   ├── Layout.tsx
 │   │   ├── LanguageSwitcher.tsx
 │   │   └── VideoPlayer.tsx
-│   ├── pages/
-│   │   ├── index.tsx
-│   │   ├── whatsapp.tsx
-│   │   ├── contact.tsx
-│   │   ├── about.tsx
-│   │   ├── privacy-policy.tsx
-│   │   └── terms.tsx
+│   ├── app/
+│   │   ├── page.tsx                        # redirects to /en
+│   │   └── [locale]/
+│   │       ├── layout.tsx                  # sets lang/dir and providers
+│   │       ├── page.tsx                    # home
+│   │       ├── contact/
+│   │       │   └── page.tsx
+│   │       ├── whatsapp/
+│   │       │   └── page.tsx
+│   │       ├── privacy-policy/
+│   │       │   └── page.tsx
+│   │       ├── terms/
+│   │       │   └── page.tsx
+│   │       ├── faq/
+│   │       │   └── page.tsx
+│   │       └── not-found.tsx
 │   ├── styles/
 │   │   ├── globals.css
 │   │   └── theme.css
@@ -86,8 +95,8 @@ khaial-ai/
 
 | Category          | Tool/Stack                                                               |
 | ----------------- | ------------------------------------------------------------------------ |
-| Framework         | Next.js (App Router optional)                                            |
-| Styling           | Tailwind CSS                                                             |
+| Framework         | Next.js (App Router)                                                      |
+| Styling           | Tailwind CSS / ShadCN                                                    |
 | Language          | TypeScript                                                               |
 | Forms             | HTML form + Google Sheets webhook (via SheetMonkey / Formspree / Zapier) |
 | Booking           | Calendly Embed                                                           |
