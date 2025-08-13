@@ -1,11 +1,27 @@
 {
   "navigation": {
     "home": "الرئيسية",
+    "about": "من نحن",
     "whatsapp": "وكلاء واتساب",
     "contact": "تواصل معنا",
     "faq": "الأسئلة الشائعة",
     "privacy": "سياسة الخصوصية",
     "terms": "الشروط"
+  },
+  "social": {
+    "twitter": "تويتر (إكس)",
+    "instagram": "إنستغرام",
+    "youtube": "يوتيوب"
+  },
+  "footer": {
+    "navigate": "تصفح",
+    "social": "التواصل الاجتماعي",
+    "subscribe_title": "نموذج الاشتراك",
+    "subscribe_cta": "اشترك",
+    "email_placeholder": "أدخل بريدك الإلكتروني...",
+    "email_input_label": "البريد الإلكتروني",
+    "subscribe_form": "نموذج الاشتراك في النشرة",
+    "legal_nav": "روابط قانونية"
   },
   "home": {
     "title": "الرئيسية",

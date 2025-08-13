@@ -82,7 +82,7 @@ khaial-ai/
 │       ├── en.json
 │       └── ar.json
 ├── .env
-├── next.config.js
+├── next.config.ts
 ├── tailwind.config.js
 ├── postcss.config.js
 ├── tsconfig.json

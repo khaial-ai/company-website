@@ -58,7 +58,7 @@ module.exports = {
 }
 ```
 
-## Directory Structure
+## Directory Structure (App Router)
 
 ```
 project-root/
@@ -72,74 +72,61 @@ project-root/
 │           ├── common.json
 │           ├── homepage.json
 │           └── navigation.json
-├── components/
-│   ├── Layout.js
-│   ├── Navigation.js
-│   └── LanguageToggle.js
-├── styles/
-│   └── globals.css
-├── pages/
-│   ├── _app.js
-│   ├── _document.js
-│   └── index.js
-├── next-i18next.config.js
-└── next.config.js
+├── app/
+│   ├── page.tsx                         # redirects to /en (optional)
+│   └── [locale]/
+│       ├── layout.tsx                   # sets html lang/dir and wraps providers
+│       ├── page.tsx                     # home page
+│       ├── contact/
+│       │   └── page.tsx
+│       ├── whatsapp/
+│       │   └── page.tsx
+│       ├── privacy-policy/
+│       │   └── page.tsx
+│       ├── terms/
+│       │   └── page.tsx
+│       ├── faq/
+│       │   └── page.tsx
+│       └── not-found.tsx
+├── src/
+│   ├── styles/
+│   │   └── globals.css
+│   └── utils/
+│       └── seo.ts                       # optional helpers for metadata
+├── next-i18next.config.js               # if using next-i18next
+└── next.config.ts
 ```
 
 ## Internationalization Configuration
 
-### 1. Update _app.js
+### 1. App Router Layout (replaces _app.js)
 
-```javascript
-import { appWithTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import '../styles/globals.css'
+```tsx
+// app/[locale]/layout.tsx
+import "@/styles/globals.css";
+import type { ReactNode } from "react";
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter()
-  
-  useEffect(() => {
-    // Set document direction based on locale
-    const isRTL = router.locale === 'ar'
-    document.documentElement.dir = isRTL ? 'rtl' : 'ltr'
-    document.documentElement.lang = router.locale
-  }, [router.locale])
+export default function LocaleLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: { locale: string };
+}) {
+  const { locale } = params;
+  const dir = locale === "ar" ? "rtl" : "ltr";
 
-  return <Component {...pageProps} />
-}
-
-export default appWithTranslation(MyApp)
-```
-
-### 2. Update _document.js
-
-```javascript
-import { Html, Head, Main, NextScript } from 'next/document'
-
-export default function Document() {
   return (
-    <Html>
-      <Head>
-        {/* Arabic fonts */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        {/* English fonts */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  )
+    <html lang={locale} dir={dir}>
+      <body>{children}</body>
+    </html>
+  );
 }
 ```
+
+### 2. No _document.js in App Router
+
+Use the root or segment `layout.tsx` to set `<html>`, fonts, and providers. Add font links via `<link>` in `layout.tsx` or use `next/font`.
 
 ## Translation Files
 
@@ -302,21 +289,16 @@ module.exports = {
 
 ### Font Component
 
-```javascript
-// components/LocalizedText.js
-import { useRouter } from 'next/router'
+```tsx
+// components/LocalizedText.tsx
+"use client";
+import { useParams } from "next/navigation";
 
-export default function LocalizedText({ children, className = '' }) {
-  const router = useRouter()
-  const isArabic = router.locale === 'ar'
-  
-  const fontClass = isArabic ? 'font-arabic arabic-text' : 'font-english english-text'
-  
-  return (
-    <span className={`${fontClass} ${className}`}>
-      {children}
-    </span>
-  )
+export default function LocalizedText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const params = useParams<{ locale: string }>();
+  const isArabic = params?.locale === "ar";
+  const fontClass = isArabic ? "font-arabic arabic-text" : "font-english english-text";
+  return <span className={`${fontClass} ${className}`}>{children}</span>;
 }
 ```
 
@@ -324,136 +306,102 @@ export default function LocalizedText({ children, className = '' }) {
 
 ### 1. Language Toggle Component
 
-```javascript
-// components/LanguageToggle.js
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+```tsx
+// components/LanguageToggle.tsx
+"use client";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function LanguageToggle() {
-  const router = useRouter()
-  const { t } = useTranslation('common')
-  
-  const switchLanguage = (locale) => {
-    router.push(router.asPath, router.asPath, { locale })
-  }
-  
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const switchLanguage = (locale: "en" | "ar") => {
+    const parts = (pathname ?? "/").split("/");
+    if (parts.length > 1) parts[1] = locale;
+    router.push(parts.join("/") || "/");
+  };
+
+  const isArabic = pathname?.split("/")[1] === "ar";
+
   return (
-    <div className="flex items-center space-x-2 rtl:space-x-reverse">
-      <button
-        onClick={() => switchLanguage('en')}
-        className={`px-3 py-1 rounded ${
-          router.locale === 'en' 
-            ? 'bg-blue-500 text-white' 
-            : 'bg-gray-200 text-gray-700'
-        }`}
-      >
-        EN
-      </button>
-      <button
-        onClick={() => switchLanguage('ar')}
-        className={`px-3 py-1 rounded ${
-          router.locale === 'ar' 
-            ? 'bg-blue-500 text-white' 
-            : 'bg-gray-200 text-gray-700'
-        }`}
-      >
-        ع
-      </button>
+    <div className="flex items-center gap-2 rtl:gap-2">
+      <button onClick={() => switchLanguage("en")} className={`px-3 py-1 rounded ${!isArabic ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"}`}>EN</button>
+      <button onClick={() => switchLanguage("ar")} className={`px-3 py-1 rounded ${isArabic ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"}`}>ع</button>
     </div>
-  )
+  );
 }
 ```
 
 ### 2. Responsive Navigation
 
-```javascript
-// components/Navigation.js
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import LocalizedText from './LocalizedText'
-import LanguageToggle from './LanguageToggle'
+```tsx
+// components/Navigation.tsx
+"use client";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Navigation() {
-  const { t } = useTranslation('common')
-  const router = useRouter()
-  const isRTL = router.locale === 'ar'
+  const params = useParams<{ locale: string }>();
+  const locale = params?.locale ?? "en";
+  const isRTL = locale === "ar";
 
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <img
-              src="/logo.svg"
-              alt="Khaial AI"
-              className="h-8 w-auto"
-            />
+          <div className={`flex items-center ${isRTL ? "flex-row-reverse" : ""}`}>
+            <img src="/logo.svg" alt="Khaial AI" className="h-8 w-auto" />
           </div>
-          
-          {/* Navigation Links */}
-          <div className={`hidden md:flex items-center space-x-8 ${isRTL ? 'space-x-reverse' : ''}`}>
-            <a href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
-              <LocalizedText>{t('navigation.home')}</LocalizedText>
-            </a>
-            <a href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">
-              <LocalizedText>{t('navigation.about')}</LocalizedText>
-            </a>
-            <a href="/services" className="text-gray-700 hover:text-blue-600 transition-colors">
-              <LocalizedText>{t('navigation.services')}</LocalizedText>
-            </a>
-            <a href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
-              <LocalizedText>{t('navigation.contact')}</LocalizedText>
-            </a>
+          <div className={`hidden md:flex items-center gap-8 ${isRTL ? "flex-row-reverse" : ""}`}>
+            <Link href={`/${locale}`}>Home</Link>
+            <Link href={`/${locale}/contact`}>Contact</Link>
+            <Link href={`/${locale}/whatsapp`}>WhatsApp</Link>
           </div>
-          
-          {/* Language Toggle */}
           <LanguageToggle />
         </div>
       </div>
     </nav>
-  )
+  );
 }
 ```
 
 ### 3. Hero Section with RTL Support
 
-```javascript
-// components/HeroSection.js
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import LocalizedText from './LocalizedText'
+```tsx
+// components/HeroSection.tsx
+"use client";
+import { useTranslation } from "react-i18next";
+import { useParams } from "next/navigation";
+import LocalizedText from "./LocalizedText";
 
 export default function HeroSection() {
-  const { t } = useTranslation('homepage')
-  const router = useRouter()
-  const isRTL = router.locale === 'ar'
+  const { t } = useTranslation("homepage");
+  const params = useParams<{ locale: string }>();
+  const isRTL = params?.locale === "ar";
 
   return (
     <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center ${isRTL ? 'rtl' : 'ltr'}`}>
+        <div className={`text-center ${isRTL ? "rtl" : "ltr"}`}>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            <LocalizedText>{t('hero.title')}</LocalizedText>
+            <LocalizedText>{t("hero.title")}</LocalizedText>
           </h1>
-          
           <p className="text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
-            <LocalizedText>{t('hero.subtitle')}</LocalizedText>
+            <LocalizedText>{t("hero.subtitle")}</LocalizedText>
           </p>
-          
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center ${isRTL ? "sm:flex-row-reverse" : ""}`}>
             <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-              <LocalizedText>{t('buttons.get_started')}</LocalizedText>
+              <LocalizedText>{t("buttons.get_started")}</LocalizedText>
             </button>
-            
             <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-              <LocalizedText>{t('buttons.learn_more')}</LocalizedText>
+              <LocalizedText>{t("buttons.learn_more")}</LocalizedText>
             </button>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 ```
 
@@ -461,65 +409,43 @@ export default function HeroSection() {
 
 ### 1. Page-Level Implementation
 
-```javascript
-// pages/index.js
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useTranslation } from 'next-i18next'
-import Layout from '../components/Layout'
-import HeroSection from '../components/HeroSection'
+```tsx
+// app/[locale]/page.tsx
+"use client";
+import Layout from "@/src/components/Layout";
 
-export default function Home() {
-  const { t } = useTranslation('homepage')
-
+export default function HomePage() {
   return (
     <Layout>
-      <HeroSection />
-      {/* Other components */}
+      {/* Your sections here */}
     </Layout>
-  )
-}
-
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'homepage', 'navigation'])),
-    },
-  }
+  );
 }
 ```
 
-### 2. SEO Considerations
+### 2. SEO Considerations (Metadata API)
 
-```javascript
-// components/SEOHead.js
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+```ts
+// app/[locale]/page.tsx
+import type { Metadata } from "next";
 
-export default function SEOHead({ title, description, keywords }) {
-  const router = useRouter()
-  const { t } = useTranslation('common')
-  const isRTL = router.locale === 'ar'
+export const metadata: Metadata = {
+  title: "Khaial AI",
+  description: "...",
+};
 
-  return (
-    <Head>
-      <title>{title} | Khaial AI</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-      <meta name="language" content={router.locale} />
-      <meta name="dir" content={isRTL ? 'rtl' : 'ltr'} />
-      
-      {/* Alternate language versions */}
-      <link rel="alternate" hrefLang="en" href={`https://khaial.ai/en${router.asPath}`} />
-      <link rel="alternate" hrefLang="ar" href={`https://khaial.ai/ar${router.asPath}`} />
-      <link rel="alternate" hrefLang="x-default" href={`https://khaial.ai${router.asPath}`} />
-      
-      {/* Open Graph */}
-      <meta property="og:title" content={`${title} | Khaial AI`} />
-      <meta property="og:description" content={description} />
-      <meta property="og:locale" content={router.locale === 'ar' ? 'ar_KW' : 'en_US'} />
-    </Head>
-  )
+// Or for dynamic values
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Khaial AI",
+    alternates: {
+      languages: {
+        en: "https://khaial.ai/en",
+        ar: "https://khaial.ai/ar",
+        "x-default": "https://khaial.ai",
+      },
+    },
+  };
 }
 ```
 
@@ -637,7 +563,7 @@ describe('Localization', () => {
 ```
 
 ### 3. Performance Considerations
-- Use `getStaticProps` for static content translation loading
+- Use ISR via `export const revalidate = <seconds>` or `fetch(..., { next: { revalidate: <seconds> } })`
 - Implement lazy loading for translation namespaces
 - Optimize font loading with `font-display: swap`
 - Consider splitting translations by page/component

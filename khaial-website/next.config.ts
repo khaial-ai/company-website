@@ -1,13 +1,9 @@
 import type { NextConfig } from "next";
 
+// App Router handles locale via the `[locale]` segment.
+// Remove legacy i18n block to avoid warnings and 307 spam from root prefetches.
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "ar"],
-    localeDetection: false,
-  },
 };
 
 export default nextConfig;

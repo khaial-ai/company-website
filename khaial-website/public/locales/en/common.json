@@ -1,11 +1,27 @@
 {
   "navigation": {
     "home": "Home",
+    "about": "About",
     "whatsapp": "WhatsApp Agents",
     "contact": "Contact",
     "faq": "FAQ",
     "privacy": "Privacy Policy",
     "terms": "Terms"
+  },
+  "social": {
+    "twitter": "Twitter (X)",
+    "instagram": "Instagram",
+    "youtube": "Youtube"
+  },
+  "footer": {
+    "navigate": "Navigate",
+    "social": "Social",
+    "subscribe_title": "Subscribe Form",
+    "subscribe_cta": "Subscribe Us",
+    "email_placeholder": "Enter Your Email...",
+    "email_input_label": "Email address",
+    "subscribe_form": "Newsletter subscription form",
+    "legal_nav": "Legal Navigation"
   },
   "home": {
     "title": "Home",

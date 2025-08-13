@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "@components/LanguageSwitcher";
+import Footer from "@components/organisms/Footer";
 
 const Layout = ({ children }: PropsWithChildren) => {
   const params = useParams<{ locale: string }>();
@@ -37,19 +38,7 @@ const Layout = ({ children }: PropsWithChildren) => {
         </div>
       </header>
       <main className="flex-1">{children}</main>
-      <footer className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
-          <span className="text-sm text-gray-500">© {new Date().getFullYear()} Khaial AI</span>
-          <div className={`flex items-center gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-            <Link href={`/${params?.locale ?? "en"}/privacy-policy`} className="text-sm hover:underline">
-              {t("navigation.privacy")}
-            </Link>
-            <Link href={`/${params?.locale ?? "en"}/terms`} className="text-sm hover:underline">
-              {t("navigation.terms")}
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

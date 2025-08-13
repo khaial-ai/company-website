@@ -130,6 +130,22 @@ khaial-website
 │   │   └── misc/
 │   ├── robots.txt
 │   └── sitemap.xml
+├── app/
+│   ├── page.tsx                        # redirects to /en
+│   └── [locale]/
+│       ├── layout.tsx                  # sets lang/dir and providers
+│       ├── page.tsx                    # home
+│       ├── contact/
+│       │   └── page.tsx
+│       ├── whatsapp/
+│       │   └── page.tsx
+│       ├── privacy-policy/
+│       │   └── page.tsx
+│       ├── terms/
+│       │   └── page.tsx
+│       ├── faq/
+│       │   └── page.tsx
+│       └── not-found.tsx
 └── src/
     ├── components/                    # Reusable UI components
     │   ├── atoms/                      # Smallest building blocks
@@ -175,16 +191,7 @@ khaial-website
     │       ├── WhatsAppIntro.tsx
     │       └── index.ts
     │
-    ├── pages/
-    │   ├── _app.tsx
-    │   ├── _document.tsx
-    │   ├── index.tsx                    # Imports sections from /features/home
-    │   ├── contact.tsx
-    │   ├── faq.tsx
-    │   ├── privacy-policy.tsx
-    │   ├── terms.tsx
-    │   ├── whatsapp.tsx
-    │   └── 404.tsx
+    
     │
     ├── styles/
     │   ├── globals.css
@@ -340,17 +347,17 @@ If a section is **only** used on one page and isn’t generic enough for `/compo
 
 ---
 
-## **6. `/src/pages`**
+## **6. `/app`**
 
-Your **Next.js page entry points**.
+Your **Next.js App Router** entry tree.
 
-* `_app.tsx` – Wraps all pages (ThemeProvider, i18next provider, global state).
-* `_document.tsx` – Custom HTML structure (lang dir, meta tags).
-* `index.tsx` – Imports `/features/home/*` to build homepage.
-* `404.tsx` – Custom not-found page.
+* `page.tsx` – Root page (can redirect to `/en`).
+* `layout.tsx` – Root layout (or `app/[locale]/layout.tsx` for locale wrapper).
+* `[locale]/` – Segment containing localized routes (`page.tsx`, `contact/page.tsx`, etc.).
+* `not-found.tsx` – Custom not-found page.
 
 **When to use**:
-Only to assemble existing sections — never hardcode full designs here.
+Compose server/client components with layouts; avoid legacy Pages Router files.
 
 ---
 
@@ -390,7 +397,7 @@ TypeScript interfaces/types.
 Helper functions.
 
 * `helpers.ts` – Misc utilities (e.g., className merging).
-* `seo.ts` – Functions to build dynamic `<Head>` tags.
+* `seo.ts` – Helpers to build Next.js Metadata objects.
 * `formatters.ts` – Format dates, currencies, etc.
 
 ---
