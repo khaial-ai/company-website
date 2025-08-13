@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { PropsWithChildren } from "react";
 import { useTranslation } from "next-i18next";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import LanguageSwitcher from "@components/LanguageSwitcher";
 
 const Layout = ({ children }: PropsWithChildren) => {
   const router = useRouter();

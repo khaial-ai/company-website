@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Layout from "@/components/Layout";
+import Layout from "@components/Layout";
 
 type ContactFormData = {
   name: string;

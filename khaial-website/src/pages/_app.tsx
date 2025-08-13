@@ -4,7 +4,7 @@ import { appWithTranslation } from "next-i18next";
 import "../../next-i18next.config";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { theme } from "@/theme/theme";
+import { theme } from "@theme/theme";
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
+import Layout from "@components/Layout";
 import { useTranslation } from "next-i18next";
 
 const FAQPage = () => {
