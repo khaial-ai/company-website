@@ -5,7 +5,8 @@ export const NAV_LINKS: NavItem[] = [
   { labelKey: "navigation.home", href: "/" },
   { labelKey: "navigation.whatsapp", href: "/whatsapp" },
   { labelKey: "navigation.contact", href: "/contact" },
-  { labelKey: "navigation.faq", href: "/faq" },
+  // Route FAQ to the Contact page FAQ section anchor
+  { labelKey: "navigation.faq", href: "/contact#faq" },
 ];
 
 export const SOCIAL_LINKS: SocialItem[] = [
@@ -21,5 +22,3 @@ export const LEGAL_LINKS: NavItem[] = [
 
 // External appointment link (can be Calendly or any booking tool)
 export const BOOK_APPOINTMENT_URL = "https://cal.com/";
-
-

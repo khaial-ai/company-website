@@ -140,14 +140,44 @@
     "cta_contact": "Contact Us",
     "cta_back_home": "Back to Home"
   },
+  "whatsappIntro": {
+    "badge_year": "2025",
+    "badge_label": "Explore Our Journey",
+    "title_l1": "Integrate WhatsApp",
+    "title_l2": "with AI!",
+    "subtitle": "Khaial will integrate AI Agents through WhatsApp so you don't have to use 10 different tools.",
+    "video_aria": "Introductory video about WhatsApp AI agents"
+  },
+  "whatsappRevenue": {
+    "pill": "About Khaial",
+    "title_l1": "WhatsApp Revenue",
+    "title_l2": "Machine",
+    "bullets": [
+      "WhatsApp Sales Agent that qualifies leads 24/7",
+      "Customer Support Bot with instant Arabic & English responses",
+      "Automated FAQ responses with smart triggers",
+      "Full CRM/Sheets/Website integration"
+    ],
+    "cta": "Book an Appointment",
+    "rating": "900+ People Rated"
+  },
   "contact": {
     "title": "Contact Us",
     "fields": {
-      "name": "Name",
+      "firstName": "First name",
+      "lastName": "Last name",
       "email": "Email",
-      "company": "Company",
-      "whatsapp": "WhatsApp Number",
+      "country": "Where are you from?",
+      "companyType": "What's the type of your company?",
       "message": "Message"
+    },
+    "placeholders": {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "jane@company.com",
+      "country": "Select your country...",
+      "companyType": "Select category",
+      "message": "Type your message..."
     },
     "submit": "Submit",
     "submitted": "Submitted"
