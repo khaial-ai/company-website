@@ -8,6 +8,16 @@
     "privacy": "Privacy Policy",
     "terms": "Terms"
   },
+  "hero": {
+    "year_badge": "2025",
+    "studio_label": "Next-Gen AI Studio",
+    "title_line1": "AI Systems That Do",
+    "title_line2": "Everything For You.",
+    "title_line3": "",
+    "subtitle": "We handle Sales, Content, Support & Operations so you grow 10x faster than your competitors",
+    "cta_primary": "Connect With Us",
+    "cta_secondary": "What is Khaial?"
+  },
   "cta": {
     "pill": "Features",
     "title_primary": "Our Method is Simple and",
@@ -29,6 +39,93 @@
     "email_input_label": "Email address",
     "subscribe_form": "Newsletter subscription form",
     "legal_nav": "Legal Navigation"
+  },
+  "testimonials": {
+    "section_aria": "Client testimonials",
+    "pill": "Testimonial",
+    "pill_label": "",
+    "title_line1": "What Our Clients Say",
+    "title_line2": "About Khaial's Excellence",
+    "subtitle": "Hear from our happy clients! See how we’ve helped them achieve their goals and create lasting impact.",
+    "cta": "Book An Appointment",
+    "cta_aria": "Book an appointment",
+    "quotes": [
+      "They not only delivered a top‑notch website but also provided strategic guidance that moved our metrics.",
+      "The team understood our complex requirements and provided a user‑friendly, scalable solution.",
+      "Their innovative solutions helped streamline our operations, and the results exceeded expectations."
+    ]
+  },
+  "comparison": {
+    "pill": "Comparison",
+    "title_primary": "Before Khaial vs. After",
+    "title_secondary": "Feel the Difference",
+    "before": [
+      "6+ hours wasted daily",
+      "Losing sales every day",
+      "Complex content creation",
+      "Competitors work at 10x your speed",
+      "Customers complaining daily"
+    ],
+    "after": [
+      "AI‑Driven Workflows",
+      "Premium, Minimal Effort",
+      "Performance Optimized",
+      "Future‑Proof Technology",
+      "Unmatched Flexibility"
+    ]
+  },
+  "services": {
+    "pill": "Services",
+    "title_line1": "AI‑Powered Services for",
+    "title_line2": "Future‑Driven Businesses",
+    "subtitle": "Our cutting‑edge AI solutions are designed to transform businesses, enhance efficiency, and drive innovation.",
+    "cta": "Book a 15‑min call",
+    "cards": [
+      {
+        "title": "AI‑Powered Development",
+        "subtitle": "Smart Websites",
+        "desc": "We build AI‑driven websites that adapt to users and automation."
+      },
+      {
+        "title": "AI WhatsApp Chatbots",
+        "subtitle": "24/7 Customer Support",
+        "desc": "Instant AI‑powered chatbots on WhatsApp and Website that automate responses."
+      },
+      {
+        "title": "Creative AI",
+        "subtitle": "Makes AI content very real.",
+        "desc": "Leverage AI to create content without fancy tech and a lot of money"
+      }
+    ],
+    "chips": [
+      "AI Content Generation",
+      "UX/UI Optimization",
+      "Data Insight",
+      "Analytics",
+      "Personalization",
+      "WhatsApp Integration",
+      "Lead Generation"
+    ]
+  },
+  "about": {
+    "aria": "About Us",
+    "pill": "About Us",
+    "pill_label": "",
+    "start_index": 22,
+    "text": "Manual processes are killing your growth potential and\n burning out your team. We design custom AI systems\n turn your business into a profit-generating machine that\n runs itself."
+  },
+  "faqSection": {
+    "aria": "Frequently Asked Questions",
+    "pill": "FAQ",
+    "title_line1": "Frequently",
+    "title_line2": "Asked Questions",
+    "subtitle": "Have questions? Our FAQ section has you covered with quick answers to the most common inquiries.",
+    "items": [
+      { "q": "What do I need to get started?", "a": "Sample answer text goes here. We'll guide you step by step and handle the heavy lifting." },
+      { "q": "What kind of customization is available?", "a": "Sample answer text goes here. Solutions are tailored to your workflows and tools." },
+      { "q": "What if the system doesn't bring results?", "a": "Sample answer text goes here. We iterate and measure success criteria together." },
+      { "q": "Do I need to know how to code?", "a": "Sample answer text goes here. No coding required for most use cases." }
+    ]
   },
   "home": {
     "title": "Home",

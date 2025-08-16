@@ -37,7 +37,7 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  const linksToShow = NAV_LINKS.filter((l) => l.href !== "/#about");
+  const linksToShow = NAV_LINKS;
 
   return (
     <header

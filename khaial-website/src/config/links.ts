@@ -3,8 +3,7 @@ export type SocialItem = { labelKey: string; href: string };
 
 export const NAV_LINKS: NavItem[] = [
   { labelKey: "navigation.home", href: "/" },
-  // About is an in-page anchor on home for now
-  { labelKey: "navigation.about", href: "/#about" },
+  { labelKey: "navigation.whatsapp", href: "/whatsapp" },
   { labelKey: "navigation.contact", href: "/contact" },
   { labelKey: "navigation.faq", href: "/faq" },
 ];
