@@ -1,26 +1,26 @@
 :root {
-  /* Background gradient */
-  --k-bg-from: #0b0517;
-  --k-bg-to: #160b2a;
+  /* Background gradient (refined to match screenshot) */
+  --k-bg-from: #0B0714; /* near-black purple */
+  --k-bg-to: #1A0F2F;   /* deep indigo/purple */
 
   /* Surface & borders */
-  --k-surface: #121022;
-  --k-border: #2A2A2A;
+  --k-surface: #0F0B1E; /* subtle darker surface */
+  --k-border: #26233A;  /* dim border */
 
-  /* Brand purple gradient */
-  --k-primary-from: #7C3AED;
-  --k-primary-to: #6D28D9;
+  /* Brand purple gradient (pill button) */
+  --k-primary-from: #8B5CF6; /* violet-500 */
+  --k-primary-to: #6D28D9;   /* violet-700 */
 
   /* Rings/Glows use RGB for alpha variations */
-  --k-ring-rgb: 124, 58, 237;
+  --k-ring-rgb: 139, 92, 246;
 
   /* Text */
-  --k-text-muted: #9CA3AF;
+  --k-text-muted: #A1A1AA;
 }
 
 @layer utilities {
   .bg-brand-gradient {
-    background-image: radial-gradient(1200px 500px at 75% -10%, rgba(var(--k-ring-rgb), 0.16), transparent 40%),
+    background-image: radial-gradient(1100px 460px at 50% -8%, rgba(var(--k-ring-rgb), 0.18), transparent 45%),
       linear-gradient(180deg, var(--k-bg-from), var(--k-bg-to));
   }
   .btn-brand-gradient {

@@ -20,4 +20,7 @@ export const LEGAL_LINKS: NavItem[] = [
   { labelKey: "navigation.privacy", href: "/privacy-policy" },
 ];
 
+// External appointment link (can be Calendly or any booking tool)
+export const BOOK_APPOINTMENT_URL = "https://cal.com/";
+
 

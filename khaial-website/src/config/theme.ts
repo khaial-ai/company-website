@@ -10,20 +10,20 @@ export type BrandPalette = {
 };
 
 export const BRAND_COLORS: BrandPalette = {
-  // Dark space/purple gradient inferred from the provided footer design
-  backgroundFrom: "#0b0517",
-  backgroundTo: "#160b2a",
-  // Panels / inputs on dark
-  surface: "#121022",
-  // Purple CTA gradient
-  primaryFrom: "#7C3AED",
+  // Dark gradient seen in the footer screenshot (near-black to deep purple)
+  backgroundFrom: "#0B0714",
+  backgroundTo: "#1A0F2F",
+  // Surface cards/inputs
+  surface: "#0F0B1E",
+  // CTA purple gradient (matches bright purple pill)
+  primaryFrom: "#8B5CF6",
   primaryTo: "#6D28D9",
   // For glows and focus rings (r,g,b only)
-  ringRgb: "124,58,237",
+  ringRgb: "139,92,246",
   // Muted foreground on dark
-  textMuted: "#9CA3AF",
+  textMuted: "#A1A1AA",
   // Subtle borders on dark
-  border: "#2A2A2A",
+  border: "#26233A",
 };
 
 export const BRAND_SHADOWS = {

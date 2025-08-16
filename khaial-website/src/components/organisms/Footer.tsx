@@ -53,20 +53,20 @@ const Footer = () => {
   return (
     <footer className="relative text-white">
       <div className="bg-brand-gradient">
-        <div className="mx-auto max-w-6xl px-4 pt-16 pb-10">
+        <div className="mx-auto max-w-6xl px-6 pt-20 pb-12">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
             <div className="flex flex-col gap-4">
               <Link href={localePrefix} className="inline-flex items-center gap-3" aria-label="Khaial AI Home">
-                <Image src="/assets/logos/logo.png" alt="Khaial AI" width={72} height={72} className="h-14 w-14 object-contain" />
+                <Image src="/assets/logos/logo.png" alt="Khaial AI" width={80} height={80} className="h-16 w-16 object-contain" />
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h3 className="mb-3 text-lg font-semibold text-white/90">{t("footer.navigate")}</h3>
+                <h3 className="mb-4 text-lg font-semibold text-white">{t("footer.navigate")}</h3>
                 <ul className="space-y-2">
                   {NAV_LINKS.map((item) => (
                     <li key={item.href}>
-                      <Link href={`${localePrefix}${item.href}`} className="text-sm text-white/80 hover:text-white">
+                      <Link href={`${localePrefix}${item.href}`} className="text-[15px] text-white/80 hover:text-white">
                         {t(item.labelKey)}
                       </Link>
                     </li>
@@ -74,11 +74,11 @@ const Footer = () => {
                 </ul>
               </div>
               <div>
-                <h3 className="mb-3 text-lg font-semibold text-white/90">{t("footer.social")}</h3>
+                <h3 className="mb-4 text-lg font-semibold text-white">{t("footer.social")}</h3>
                 <ul className="space-y-2">
                   {SOCIAL_LINKS.map((item) => (
                     <li key={item.href}>
-                      <Link href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/80 hover:text-white">
+                      <Link href={item.href} target="_blank" rel="noopener noreferrer" className="text-[15px] text-white/80 hover:text-white">
                         {t(item.labelKey)}
                       </Link>
                     </li>
@@ -87,23 +87,22 @@ const Footer = () => {
               </div>
             </div>
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-white/90">{t("footer.subscribe_title")}</h3>
+              <h3 className="mb-4 text-lg font-semibold text-white">{t("footer.subscribe_title")}</h3>
               <SubscribeForm />
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="border-t border-[var(--k-border)]/60 bg-black/40">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-4 md:flex-row">
-          <p className="text-xs text-white/60">© {new Date().getFullYear()} Khaial AI</p>
-          <nav className="flex items-center gap-6" aria-label={t("footer.legal_nav")}> 
-            {LEGAL_LINKS.map((item) => (
-              <Link key={item.href} href={`${localePrefix}${item.href}`} className="text-xs text-white/70 hover:text-white">
-                {t(item.labelKey)}
-              </Link>
-            ))}
-          </nav>
+        <div className="border-t border-[var(--k-border)]/60 bg-black/30">
+            <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-5 md:flex-row">
+                <p className="text-sm text-white/60">© {new Date().getFullYear()} Khaial AI</p>
+                <nav className="flex items-center gap-6" aria-label={t("footer.legal_nav")}> 
+                    {LEGAL_LINKS.map((item) => (
+                        <Link key={item.href} href={`${localePrefix}${item.href}`} className="text-sm text-white/70 hover:text-white">
+                            {t(item.labelKey)}
+                        </Link>
+                    ))}
+                </nav>
+            </div>
         </div>
       </div>
     </footer>
