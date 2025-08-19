@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { BOOK_APPOINTMENT_URL } from "@config/links";
+import Pill from "@components/atoms/Pill";
 
 type Testimonial = {
   name: string;
@@ -93,39 +94,54 @@ const Testimonials = ({ items }: TestimonialsProps) => {
   return (
     <section
       aria-label={t("testimonials.section_aria")}
-      className="relative isolate overflow-hidden py-24 sm:py-28"
+      className="relative isolate overflow-hidden py-24 sm:py-32"
     >
-      {/* Top subtle purple band & dotted overlay */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[300px] bg-[radial-gradient(1200px_260px_at_50%_-30px,rgba(var(--k-ring-rgb),0.22),transparent_55%)]" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(#ffffff14_1px,transparent_1px),linear-gradient(90deg,#ffffff14_1px,transparent_1px)] bg-[size:22px_22px] opacity-[0.08]" />
+      {/* Enhanced background with multiple gradient layers */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        {/* Primary gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/95 to-black" />
+        {/* Purple accent gradients */}
+        <div className="absolute inset-x-0 top-0 h-[400px] bg-[radial-gradient(1400px_300px_at_50%_-50px,rgba(var(--k-ring-rgb),0.15),transparent_70%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-[300px] bg-[radial-gradient(1200px_200px_at_50%_100%,rgba(var(--k-ring-rgb),0.08),transparent_60%)]" />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] opacity-50" />
+        {/* Subtle dot pattern for texture */}
+        <div className="absolute inset-0 opacity-30" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)`,
+          backgroundSize: '24px 24px'
+        }} />
+      </div>
 
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Pill */}
-        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-[var(--k-border)]/60 bg-black/40 px-3 py-1 text-sm text-white/90 backdrop-blur">
-          <span className="inline-flex h-6 min-w-10 items-center justify-center rounded-full btn-brand-gradient px-2 text-xs font-semibold">
-            {t("testimonials.pill")}
-          </span>
-          <span className="text-white/80">{t("testimonials.pill_label")}</span>
+        <div className="flex justify-center mb-8">
+          <Pill 
+            label={t("testimonials.pill")} 
+            variant="brand"
+            ariaLabel={t("testimonials.pill_label") || t("testimonials.pill")}
+          />
         </div>
 
         {/* Title */}
-        <h2 className="text-center text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+        <h2 className="text-center text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
           {t("testimonials.title_line1")}<br className="hidden sm:block" />
-          <span className="text-white/90">{t("testimonials.title_line2")}</span>
+          <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+            {t("testimonials.title_line2")}
+          </span>
         </h2>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-6 max-w-3xl text-center text-base text-white/70 md:text-lg">
+        <p className="mx-auto mt-8 max-w-3xl text-center text-base text-white/70 md:text-lg leading-relaxed">
           {t("testimonials.subtitle")}
         </p>
 
         {/* CTA */}
-        <div className="mt-8 mb-12 flex items-center justify-center">
+        <div className="mt-10 mb-16 flex items-center justify-center">
           <Link
             href={BOOK_APPOINTMENT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-brand-gradient rounded-2xl px-6 py-3 text-base font-semibold text-white shadow-[0_8px_30px_rgba(0,0,0,0.25)] focus:outline-none focus:ring-2 ring-brand"
+            className="btn-brand-gradient rounded-2xl px-8 py-4 text-base font-semibold text-white shadow-[0_12px_40px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] hover:shadow-[0_16px_50px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.1)] transition-all duration-300 focus:outline-none focus:ring-2 ring-brand"
             aria-label={t("testimonials.cta_aria")}
           >
             {t("testimonials.cta")}
@@ -133,30 +149,35 @@ const Testimonials = ({ items }: TestimonialsProps) => {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonialsToRender.map((tItem, index) => (
             <article
               key={`${tItem.name}-${index}`}
-              className="relative rounded-2xl border border-[var(--k-border)]/60 bg-black/40 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur"
+              className="group relative rounded-3xl border border-white/[0.08] bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-8 shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-sm hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all duration-300"
             >
-              <div className="flex items-center gap-3">
-                <Avatar initial={(tItem.avatarInitial || tItem.name?.[0] || "").slice(0, 1)} src={tItem.avatarSrc} alt={tItem.name} />
-                <div className="flex min-w-0 flex-col">
-                  <span className="truncate text-sm font-semibold text-white">{tItem.name}</span>
-                  <span className="truncate text-xs text-white/60">{tItem.role}</span>
+              {/* Subtle glow effect on hover */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[var(--k-ring-rgb)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="relative">
+                <div className="flex items-center gap-4">
+                  <Avatar initial={(tItem.avatarInitial || tItem.name?.[0] || "").slice(0, 1)} src={tItem.avatarSrc} alt={tItem.name} />
+                  <div className="flex min-w-0 flex-col">
+                    <span className="truncate text-base font-semibold text-white">{tItem.name}</span>
+                    <span className="truncate text-sm text-white/60">{tItem.role}</span>
+                  </div>
                 </div>
+
+                <div className="mt-6 flex items-center gap-1" aria-label={`Rating: ${tItem.rating} out of 5`}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} filled={i < tItem.rating} />
+                  ))}
+                </div>
+
+                <p className="mt-6 text-base leading-7 text-white/85">"{tItem.quote}"</p>
+
+                {/* Subtle quote mark decoration */}
+                <div className="absolute right-6 top-6 text-2xl text-white/10 font-serif">"</div>
               </div>
-
-              <div className="mt-4 flex items-center gap-1" aria-label={`Rating: ${tItem.rating} out of 5`}>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} filled={i < tItem.rating} />
-                ))}
-              </div>
-
-              <p className="mt-4 text-[15px] leading-7 text-white/80">“{tItem.quote}”</p>
-
-              {/* Decorative corner marks to mimic the reference */}
-              <span className="pointer-events-none absolute right-4 top-4 text-white/20">×</span>
             </article>
           ))}
         </div>

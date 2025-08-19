@@ -7,7 +7,7 @@
  import { ServicesSection } from "@/features/home";
  import { AboutSection } from "@/features/home";
  import { FAQSection } from "@/features/home";
- import { HomeCTASection } from "@/features/home";
+// Footer CTA now embedded inside Footer; removed HomeCTASection import
  
  export default function HomePage() {
    return (
@@ -18,7 +18,6 @@
        <ServicesSection />
        <AboutSection />
        <FAQSection />
-       <HomeCTASection />
      </Layout>
    );
  }

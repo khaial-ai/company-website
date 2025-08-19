@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import Pill from "@components/atoms/Pill";
 
 const clamp = (value: number, min: number, max: number) => {
   if (value < min) return min;
@@ -14,8 +15,9 @@ const lerp = (start: number, end: number, t: number) => start + (end - start) * 
 const toHex = (n: number) => n.toString(16).padStart(2, "0");
 
 const interpolateGreyToWhite = (t: number) => {
-  // 0 -> #666666 (102), 1 -> #FFFFFF (255)
-  const v = Math.round(lerp(102, 255, clamp(t, 0, 1)));
+  // Start from darker grey to create better contrast
+  // 0 -> #4a4a4a (74), 1 -> #ffffff (255)
+  const v = Math.round(lerp(74, 255, clamp(t, 0, 1)));
   return `#${toHex(v)}${toHex(v)}${toHex(v)}`;
 };
 
@@ -33,8 +35,8 @@ const AnimatedText = ({ text, transitionStartIndex = 0 }: AnimatedTextProps) => 
       const el = ref.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      const startPx = window.innerHeight * 0.75; // when top reaches 75% viewport
-      const endPx = window.innerHeight * 0.15; // until 15%
+      const startPx = window.innerHeight * 0.8; // Start animation earlier
+      const endPx = window.innerHeight * 0.2; // End later for smoother progression
       const p = (startPx - rect.top) / (startPx - endPx);
       setProgress(clamp(p, 0, 1));
     };
@@ -54,7 +56,7 @@ const AnimatedText = ({ text, transitionStartIndex = 0 }: AnimatedTextProps) => 
   let currentIndex = -1;
 
   return (
-    <p ref={ref} className="mx-auto max-w-6xl text-center text-3xl font-semibold leading-[1.2] text-white/40 sm:text-5xl md:text-6xl">
+    <p ref={ref} className="mx-auto max-w-5xl text-center text-2xl font-normal leading-[1.4] text-white/30 sm:text-3xl md:text-4xl lg:text-5xl">
       {characters.map((char, idx) => {
         currentIndex = idx;
         if (char === "\n") {
@@ -62,10 +64,19 @@ const AnimatedText = ({ text, transitionStartIndex = 0 }: AnimatedTextProps) => 
         }
         const start = step * idx;
         const end = step * (idx + 1);
-        const t = progress <= start ? 0 : progress >= end ? 1 : (progress - start) / (end - start);
-        const color = idx < transitionStartIndex ? "#FFFFFF" : interpolateGreyToWhite(t);
+        // Improved easing function for smoother animation
+        const rawT = progress <= start ? 0 : progress >= end ? 1 : (progress - start) / (end - start);
+        const easedT = rawT * rawT * (3 - 2 * rawT); // Smoothstep easing
+        const color = idx < transitionStartIndex ? "#FFFFFF" : interpolateGreyToWhite(easedT);
         return (
-          <span key={idx} style={{ color, transition: "color 0.25s ease" }}>
+          <span 
+            key={idx} 
+            style={{ 
+              color, 
+              transition: "color 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+              filter: easedT > 0.5 ? `drop-shadow(0 0 8px ${color}40)` : 'none'
+            }}
+          >
             {char}
           </span>
         );
@@ -78,15 +89,22 @@ const AboutUs = () => {
   const { t } = useTranslation("common");
   const text = t("about.text");
   return (
-    <section className="relative isolate overflow-hidden py-24 sm:py-28" aria-label={t("about.aria")}>
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[240px] bg-[radial-gradient(1000px_220px_at_50%_-20px,rgba(var(--k-ring-rgb),0.20),transparent_55%)]" />
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="relative isolate overflow-hidden py-24 sm:py-32" aria-label={t("about.aria")}>
+      {/* Enhanced background */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+        <div className="absolute inset-x-0 top-0 h-[300px] bg-[radial-gradient(1200px_250px_at_50%_-30px,rgba(var(--k-ring-rgb),0.12),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:48px_48px] opacity-30" />
+      </div>
+      
+      <div className="mx-auto max-w-7xl px-6">
         {/* Pill */}
-        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-[var(--k-border)]/60 bg-black/40 px-3 py-1 text-sm text-white/90 backdrop-blur">
-          <span className="inline-flex h-6 min-w-10 items-center justify-center rounded-full btn-brand-gradient px-2 text-xs font-semibold">
-            {t("about.pill")}
-          </span>
-          <span className="text-white/80">{t("about.pill_label")}</span>
+        <div className="flex justify-center mb-12">
+          <Pill 
+            label={t("about.pill")} 
+            variant="brand"
+            ariaLabel={t("about.pill_label") || t("about.pill")}
+          />
         </div>
 
         <AnimatedText text={text} transitionStartIndex={Number(t("about.start_index")) || 0} />

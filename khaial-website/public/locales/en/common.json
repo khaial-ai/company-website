@@ -25,6 +25,12 @@
     "subtitle": "Harnessing the power of artificial intelligence to revolutionize industries and enhance human experiences.",
     "button": "Book an Appointment"
   },
+  "footerCta": {
+    "pill": "Become a Part of Us",
+    "title_primary": "Ready to Grow Your",
+    "title_secondary": "Company With Next‑Gen Innovation?",
+    "subtitle": "Ready to take the next step? Join us now and start transforming your vision into reality with expert support."
+  },
   "social": {
     "twitter": "Twitter (X)",
     "instagram": "Instagram",
@@ -111,8 +117,8 @@
     "aria": "About Us",
     "pill": "About Us",
     "pill_label": "",
-    "start_index": 22,
-    "text": "Manual processes are killing your growth potential and\n burning out your team. We design custom AI systems\n turn your business into a profit-generating machine that\n runs itself."
+    "start_index": 45,
+    "text": "Manual processes are killing your growth potential and burning out your team.\n\nWe design custom AI systems that turn your business into a profit-generating machine that runs itself."
   },
   "faqSection": {
     "aria": "Frequently Asked Questions",

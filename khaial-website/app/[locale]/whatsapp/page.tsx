@@ -9,7 +9,6 @@ export default function WhatsappPage() {
       <WhatsAppIntro />
       <WhatsAppRevenueSection />
       <WhatsAppFAQSection />
-      <WhatsAppCTASection />
     </Layout>
   );
 }

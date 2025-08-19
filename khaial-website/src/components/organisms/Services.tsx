@@ -3,146 +3,70 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { BOOK_APPOINTMENT_URL } from "@config/links";
+import Pill from "@components/atoms/Pill";
 
-type ServiceCardProps = {
-  iconEmoji: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  imageAlt: string;
-};
 
-const IconPill = ({ emoji }: { emoji: string }) => (
-  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full btn-brand-gradient text-lg">
-    <span role="img" aria-hidden>
-      {emoji}
-    </span>
-  </span>
-);
-
-const ArrowBadge = () => (
-  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-white/50">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M7 17l10-10M9 7h8v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  </span>
-);
-
-const ServiceCard = ({ iconEmoji, title, subtitle, description, imageAlt }: ServiceCardProps) => {
-  return (
-    <article className="relative overflow-hidden rounded-3xl border border-[var(--k-border)]/60 bg-black/40 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:12px_12px] opacity-40" />
-      <div className="relative flex items-start justify-between">
-        <IconPill emoji={iconEmoji} />
-        <ArrowBadge />
-      </div>
-
-      <div className="relative mt-5">
-        <h3 className="text-lg font-semibold text-white">{title}</h3>
-        <p className="mt-1 text-sm text-white/70">{subtitle}</p>
-
-        <p className="mt-5 text-[15px] leading-7 text-white/80">{description}</p>
-
-        {/* Placeholder image area; replace src later */}
-        <div className="mt-6 overflow-hidden rounded-xl border border-white/10 bg-white/5">
-          <div className="aspect-[16/9] w-full bg-[radial-gradient(circle_at_center,rgba(var(--k-ring-rgb),0.25)_0%,transparent_70%)]" aria-label={imageAlt} />
-        </div>
-      </div>
-    </article>
-  );
-};
 
 const Services = () => {
   const { t } = useTranslation("common");
 
-  const cards = [
-    {
-      iconEmoji: "⚙️",
-      title: t("services.cards.0.title"),
-      subtitle: t("services.cards.0.subtitle"),
-      description: t("services.cards.0.desc"),
-      imageAlt: t("services.cards.0.title"),
-    },
-    {
-      iconEmoji: "💬",
-      title: t("services.cards.1.title"),
-      subtitle: t("services.cards.1.subtitle"),
-      description: t("services.cards.1.desc"),
-      imageAlt: t("services.cards.1.title"),
-    },
-    {
-      iconEmoji: "✨",
-      title: t("services.cards.2.title"),
-      subtitle: t("services.cards.2.subtitle"),
-      description: t("services.cards.2.desc"),
-      imageAlt: t("services.cards.2.title"),
-    },
-  ];
-
-  const chips: string[] = t("services.chips", { returnObjects: true }) as unknown as string[];
-
   return (
-    <section className="relative isolate overflow-hidden py-24 sm:py-28">
-      {/* Top beam + dotted background */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[300px] bg-[radial-gradient(1200px_260px_at_50%_-30px,rgba(var(--k-ring-rgb),0.25),transparent_55%)]" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(#ffffff14_1px,transparent_1px),linear-gradient(90deg,#ffffff14_1px,transparent_1px)] bg-[size:22px_22px] opacity-[0.08]" />
+    <section className="relative isolate overflow-hidden py-24 sm:py-32">
+      {/* Enhanced background with deep purple gradients */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        {/* Primary deep gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/80 via-purple-900/60 to-black" />
+        {/* Central purple glow */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[600px] bg-[radial-gradient(1200px_400px_at_50%_50%,rgba(147,51,234,0.4),transparent_70%)]" />
+        {/* Top accent */}
+        <div className="absolute inset-x-0 top-0 h-[400px] bg-[radial-gradient(1400px_300px_at_50%_-50px,rgba(147,51,234,0.2),transparent_60%)]" />
+        {/* Bottom fade */}
+        <div className="absolute inset-x-0 bottom-0 h-[300px] bg-gradient-to-t from-black to-transparent" />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-40" />
+      </div>
 
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Pill */}
-        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-[var(--k-border)]/60 bg-black/40 px-3 py-1 text-sm text-white/90 backdrop-blur">
-          <span className="inline-flex h-6 min-w-10 items-center justify-center rounded-full btn-brand-gradient px-2 text-xs font-semibold">
-            {t("services.pill")}
-          </span>
+        <div className="flex justify-center mb-8">
+          <Pill 
+            label={t("services.pill")} 
+            variant="brand"
+            icon={
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor" />
+                </svg>
+              </span>
+            }
+          />
         </div>
 
         {/* Title lines */}
-        <h2 className="text-center text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+        <h2 className="text-center text-4xl font-medium leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
           {t("services.title_line1")}<br className="hidden sm:block" />
-          <span className="text-white/90">{t("services.title_line2")}</span>
+          <span className="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
+            {t("services.title_line2")}
+          </span>
         </h2>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-6 max-w-3xl text-center text-base text-white/70 md:text-lg">
+        <p className="mx-auto mt-8 max-w-2xl text-center text-base text-white/60 md:text-lg leading-relaxed">
           {t("services.subtitle")}
         </p>
 
-         {/* CTA */}
-         <div className="mt-12 flex items-center justify-center">
+        {/* CTA */}
+        <div className="mt-12 flex items-center justify-center">
           <Link
             href={BOOK_APPOINTMENT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-brand-gradient rounded-2xl px-6 py-3 text-base font-semibold text-white shadow-[0_8px_30px_rgba(0,0,0,0.25)] focus:outline-none focus:ring-2 ring-brand"
+            className="btn-brand-gradient rounded-2xl px-8 py-4 text-base font-semibold text-white shadow-[0_12px_40px_rgba(147,51,234,0.3),0_0_0_1px_rgba(255,255,255,0.05)] hover:shadow-[0_16px_50px_rgba(147,51,234,0.4),0_0_0_1px_rgba(255,255,255,0.1)] transition-all duration-300 focus:outline-none focus:ring-2 ring-purple-500"
           >
             {t("services.cta")}
           </Link>
         </div>
 
-        {/* Cards */}
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {cards.map((c) => (
-            <ServiceCard key={c.title} {...c} />
-          ))}
-        </div>
-
-        {/* Chips */}
-        {Array.isArray(chips) && chips.length > 0 && (
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            {chips.map((label, idx) => (
-              <span
-                key={`${label}-${idx}`}
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--k-border)]/60 bg-black/40 px-4 py-2 text-sm text-white/90"
-              >
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full btn-brand-gradient text-[11px] text-white">
-                  ●
-                </span>
-                {label}
-              </span>
-            ))}
-          </div>
-        )}
-
-       
       </div>
     </section>
   );

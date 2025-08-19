@@ -1,7 +1,7 @@
 :root {
   /* Background gradient (refined to match screenshot) */
-  --k-bg-from: #0B0714; /* near-black purple */
-  --k-bg-to: #1A0F2F;   /* deep indigo/purple */
+  --k-bg-from: #140C22; /* lighter deep purple */
+  --k-bg-to: #25143F;   /* indigo/purple a bit brighter */
 
   /* Surface & borders */
   --k-surface: #0F0B1E; /* subtle darker surface */
@@ -21,6 +21,12 @@
 @layer utilities {
   .bg-brand-gradient {
     background-image: radial-gradient(1100px 460px at 50% -8%, rgba(var(--k-ring-rgb), 0.18), transparent 45%),
+      linear-gradient(180deg, var(--k-bg-from), var(--k-bg-to));
+  }
+  /* Footer gradient with subtle center glow — no harsh white hotspot */
+  .bg-footer-gradient {
+    background-image:
+      radial-gradient(1100px 500px at 50% -6%, rgba(var(--k-ring-rgb), 0.10), transparent 55%),
       linear-gradient(180deg, var(--k-bg-from), var(--k-bg-to));
   }
   .btn-brand-gradient {
