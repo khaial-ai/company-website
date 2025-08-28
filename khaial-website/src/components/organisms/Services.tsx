@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { BOOK_APPOINTMENT_URL } from "@config/links";
 import Pill from "@components/atoms/Pill";
 
 
@@ -57,14 +56,13 @@ const Services = () => {
 
         {/* CTA */}
         <div className="mt-12 flex items-center justify-center">
-          <Link
-            href={BOOK_APPOINTMENT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <a
+            href="#book-a-call"
             className="btn-brand-gradient rounded-2xl px-8 py-4 text-base font-semibold text-white shadow-[0_12px_40px_rgba(147,51,234,0.3),0_0_0_1px_rgba(255,255,255,0.05)] hover:shadow-[0_16px_50px_rgba(147,51,234,0.4),0_0_0_1px_rgba(255,255,255,0.1)] transition-all duration-300 focus:outline-none focus:ring-2 ring-purple-500"
+            aria-label={t("services.cta")}
           >
             {t("services.cta")}
-          </Link>
+          </a>
         </div>
 
       </div>

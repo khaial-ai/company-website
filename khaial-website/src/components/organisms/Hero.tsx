@@ -13,7 +13,7 @@ type HeroProps = {
 
 const Hero = ({
   bgSrc = "/assets/bg/hero-bg.png",
-  ctaPrimaryHref = "/contact",
+  ctaPrimaryHref = "#book-a-call",
   ctaSecondaryHref = "/#about",
 }: HeroProps) => {
   const { t } = useTranslation("common");

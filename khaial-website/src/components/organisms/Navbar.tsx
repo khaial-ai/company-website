@@ -55,7 +55,7 @@ const Navbar = () => {
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
-  const linksToShow = NAV_LINKS;
+  const linksToShow = NAV_LINKS.filter((l) => l.labelKey !== "navigation.contact");
 
   return (
     <header
@@ -76,7 +76,7 @@ const Navbar = () => {
           <nav className="hidden md:flex items-center justify-center gap-8 text-sm absolute left-1/2 transform -translate-x-1/2">
             {linksToShow.map((item) => (
               <Link
-                key={item.href}
+                key={item.labelKey}
                 href={`${localePrefix}${item.href}`}
                 className="text-[15px] text-white/70 hover:text-white transition-colors whitespace-nowrap"
               >
@@ -91,12 +91,12 @@ const Navbar = () => {
               <LanguageSwitcher />
             </div>
             
-            <Link
-              href={`${localePrefix}/contact`}
+            <a
+              href="#book-a-call"
               className="hidden md:inline-flex btn-brand-gradient text-sm font-semibold text-white rounded-2xl px-6 py-2.5 focus:outline-none focus:ring-2 ring-brand whitespace-nowrap"
             >
               {locale === "ar" ? "تواصل معنا" : "Get In Touch"}
-            </Link>
+            </a>
 
             {/* Mobile: Language Switcher and Hamburger */}
             <div className="flex items-center gap-3 md:hidden">
@@ -153,7 +153,7 @@ const Navbar = () => {
             <nav className="flex flex-col gap-2 rounded-2xl border border-[var(--k-border)]/60 bg-black/80 p-4 backdrop-blur-sm shadow-lg shadow-black/20">
               {linksToShow.map((item, idx) => (
                 <Link
-                  key={item.href}
+                  key={item.labelKey}
                   href={`${localePrefix}${item.href}`}
                   className={[
                     "rounded-md px-3 py-2 text-white/80 hover:text-white hover:bg-white/5 transform transition-all duration-300",
@@ -164,8 +164,8 @@ const Navbar = () => {
                   {t(item.labelKey)}
                 </Link>
               ))}
-              <Link
-                href={`${localePrefix}/contact`}
+              <a
+                href="#book-a-call"
                 className={[
                   "mt-1 btn-brand-gradient text-sm font-semibold text-white rounded-2xl px-5 py-3 text-center w-full transition-transform duration-300",
                   isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
@@ -173,7 +173,7 @@ const Navbar = () => {
                 style={{ transitionDelay: `${(linksToShow.length + 1) * 40}ms` }}
               >
                 {locale === "ar" ? "تواصل معنا" : "Get In Touch"}
-              </Link>
+              </a>
             </nav>
           </div>
         </div>

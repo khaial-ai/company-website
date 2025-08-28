@@ -10,14 +10,8 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const dir = locale === "ar" ? "rtl" : "ltr";
 
-  return (
-    <html lang={locale} dir={dir}>
-      <body>
-        <Providers locale={locale}>{children}</Providers>
-      </body>
-    </html>
-  );
+  // html/body are defined at the root layout. Apply locale via Providers
+  return <Providers locale={locale}>{children}</Providers>;
 }
 

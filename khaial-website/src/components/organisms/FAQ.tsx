@@ -37,7 +37,7 @@ const FAQ = ({ items }: FAQProps) => {
   };
 
   return (
-    <section className="relative isolate overflow-hidden py-24 sm:py-28" aria-label={t("faqSection.aria")}>
+    <section id="faq" className="relative isolate overflow-hidden py-24 sm:py-28 scroll-mt-24" aria-label={t("faqSection.aria")}>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(1200px_500px_at_10%_10%,rgba(var(--k-ring-rgb),0.15),transparent_50%)]" />
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 md:grid-cols-2">

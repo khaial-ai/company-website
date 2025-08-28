@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { useParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import OptimizedVideo from "@components/molecules/OptimizedVideo";
-import { BOOK_APPOINTMENT_URL } from "@config/links";
+// Route CTA to footer booking anchor
 
 const LogoMarquee = ({ isRTL }: { isRTL: boolean }) => {
 	const innerRef = useRef<HTMLDivElement | null>(null);
@@ -66,8 +66,10 @@ const WhatsAppIntro = () => {
 	const isRTL = params?.locale === "ar";
 
 	const handleBook = () => {
-		if (!BOOK_APPOINTMENT_URL) return;
-		window.open(BOOK_APPOINTMENT_URL, "_blank", "noopener,noreferrer");
+		const el = document.getElementById("book-a-call");
+		if (el) {
+			el.scrollIntoView({ behavior: "smooth", block: "start" });
+		}
 	};
 
 	return (
