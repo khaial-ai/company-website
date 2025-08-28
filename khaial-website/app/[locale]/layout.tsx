@@ -2,6 +2,10 @@ import "@/styles/globals.css";
 import Providers from "./providers";
 import type { ReactNode } from "react";
 
+export async function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "ar" }];
+}
+
 export default async function LocaleLayout({
   children,
   params,

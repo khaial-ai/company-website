@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
 // App Router handles locale via the `[locale]` segment.
-// Remove legacy i18n block to avoid warnings and 307 spam from root prefetches.
+// Configure static export for shared hosting like Bluehost.
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  output: "export",
+  trailingSlash: true,
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
