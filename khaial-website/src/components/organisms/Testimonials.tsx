@@ -173,10 +173,10 @@ const Testimonials = ({ items }: TestimonialsProps) => {
                   ))}
                 </div>
 
-                <p className="mt-6 text-base leading-7 text-white/85">"{tItem.quote}"</p>
+                <p className="mt-6 text-base leading-7 text-white/85">&ldquo;{tItem.quote}&rdquo;</p>
 
                 {/* Subtle quote mark decoration */}
-                <div className="absolute right-6 top-6 text-2xl text-white/10 font-serif">"</div>
+                <div className="absolute right-6 top-6 text-2xl text-white/10 font-serif">&ldquo;</div>
               </div>
             </article>
           ))}

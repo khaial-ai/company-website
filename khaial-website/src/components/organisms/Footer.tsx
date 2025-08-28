@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
@@ -49,16 +50,15 @@ const Footer = () => {
             <p className="text-sm text-white/70">© {new Date().getFullYear()} Khaial AI</p>
             <nav className="flex items-center gap-4" aria-label={t("footer.legal_nav")}> 
               {LEGAL_LINKS.map((item, idx) => (
-                <>
+                <React.Fragment key={item.href}>
                   <Link
-                    key={item.href}
                     href={`${localePrefix}${item.href}`}
                     className="text-sm text-white/80 hover:text-white hover:underline underline-offset-4"
                   >
                     {t(item.labelKey)}
                   </Link>
                   {idx < LEGAL_LINKS.length - 1 ? (<span aria-hidden className="hidden md:inline-block h-4 w-px bg-white/20" />) : null}
-                </>
+                </React.Fragment>
               ))}
             </nav>
           </div>

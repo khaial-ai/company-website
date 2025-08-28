@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "@components/LanguageSwitcher";
+import LanguageSwitcher from "@components/molecules/LanguageSwitcher";
 import Footer from "@components/organisms/Footer";
 import Navbar from "@components/organisms/Navbar";
 
