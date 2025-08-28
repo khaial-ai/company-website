@@ -149,10 +149,13 @@
   "whatsappIntro": {
     "badge_year": "2025",
     "badge_label": "Explore Our Journey",
-    "title_l1": "Integrate WhatsApp",
-    "title_l2": "with AI!",
-    "subtitle": "Khaial will integrate AI Agents through WhatsApp so you don't have to use 10 different tools.",
-    "video_aria": "Introductory video about WhatsApp AI agents"
+    "title_l1": "Turn WhatsApp into Your Smartest",
+    "title_l2": "Sales & Support Agent — 24/7",
+    "subtitle": "Our AI-powered WhatsApp agents handle sales, support, and re-engagement — helping you close more deals, keep customers happy, and save hours every day.",
+    "video_aria": "Introductory video about WhatsApp AI agents",
+    "cta_label": "Book a Free Demo",
+    "social_proof_aria": "Trusted by leading businesses",
+    "testimonial_quote": "Closed 3x more deals after switching to WhatsApp AI Agent"
   },
   "whatsappRevenue": {
     "pill": "About Khaial",
