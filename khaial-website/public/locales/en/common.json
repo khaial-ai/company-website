@@ -12,7 +12,7 @@
     "year_badge": "2025",
     "studio_label": "Next-Gen AI Studio",
     "title_line1": "AI Systems That Do",
-    "title_line2": "Everything For You.",
+    "title_line2": " Everything For You.",
     "title_line3": "",
     "subtitle": "We handle Sales, Content, Support & Operations so you grow 10x faster than your competitors",
     "cta_primary": "Connect With Us",
@@ -71,6 +71,8 @@
     "pill": "Comparison",
     "title_primary": "Before Khaial vs. After",
     "title_secondary": "Feel the Difference",
+    "label_before": "Before Khaial",
+    "label_after": "After Khaial",
     "before": [
       "6+ hours wasted daily",
       "Losing sales every day",
@@ -91,7 +93,7 @@
     "title_line1": "AI‑Powered Services for",
     "title_line2": "Future‑Driven Businesses",
     "subtitle": "Our cutting‑edge AI solutions are designed to transform businesses, enhance efficiency, and drive innovation.",
-    "cta": "Book a 15‑min call",
+    "cta": "Book a 20‑min call",
     "cards": [
       {
         "title": "AI‑Powered Development",
@@ -133,10 +135,22 @@
     "title_line2": "Asked Questions",
     "subtitle": "Have questions? Our FAQ section has you covered with quick answers to the most common inquiries.",
     "items": [
-      { "q": "What do I need to get started?", "a": "Sample answer text goes here. We'll guide you step by step and handle the heavy lifting." },
-      { "q": "What kind of customization is available?", "a": "Sample answer text goes here. Solutions are tailored to your workflows and tools." },
-      { "q": "What if the system doesn't bring results?", "a": "Sample answer text goes here. We iterate and measure success criteria together." },
-      { "q": "Do I need to know how to code?", "a": "Sample answer text goes here. No coding required for most use cases." }
+      {
+        "q": "What do I need to get started?",
+        "a": "Just book a 20‑minute discovery call from the footer calendar. Come with your goals and the tools you already use (website, CRM or Sheets). We’ll map a plan and handle setup end‑to‑end."
+      },
+      {
+        "q": "What can you customize?",
+        "a": "We build AI WhatsApp agents, smart websites and integrations tailored to your workflows. Arabic and English are supported, with features like FAQ triggers, campaigns/broadcasts and appointment booking."
+      },
+      {
+        "q": "What if results aren’t there yet?",
+        "a": "We iterate. We measure key actions (leads, bookings, replies), then refine prompts, flows and integrations until targets are met."
+      },
+      {
+        "q": "Do I need to know how to code?",
+        "a": "No. Our team implements and maintains everything. You keep using WhatsApp and your existing tools—no technical work needed."
+      }
     ]
   },
   "home": {
@@ -156,7 +170,7 @@
     "badge_year": "2025",
     "badge_label": "Explore Our Journey",
     "title_l1": "Turn WhatsApp into Your Smartest",
-    "title_l2": "Sales & Support Agent — 24/7",
+    "title_l2": " Sales & Support Agent — 24/7",
     "subtitle": "Our AI-powered WhatsApp agents handle sales, support, and re-engagement — helping you close more deals, keep customers happy, and save hours every day.",
     "video_aria": "Introductory video about WhatsApp AI agents",
     "cta_label": "Book a Free Demo",
@@ -242,7 +256,7 @@
     "aria": "Services",
     "pill": "Services",
     "heading": "How can we help you?",
-    "subtitle": "Seven core offerings with quick one‑liners and a demo CTA.",
+    "subtitle": "Our offerings are designed keeping in mind the needs of the business and the customer.",
     "cta": "See it in action",
     "items": [
       { "title": "WhatsApp Sales Agent", "desc": "Engages leads, qualifies prospects, and moves deals forward automatically." },
@@ -251,6 +265,22 @@
       { "title": "Appointment & Order Tracking", "desc": "Instant bookings and seamless order tracking inside WhatsApp." },
       { "title": "Smart Auto Replies (FAQ & Triggers)", "desc": "Automated FAQs and context-aware triggers that resolve questions fast." },
       { "title": "Campaigns & Smart Broadcasts", "desc": "Targeted messages sent at the perfect time to boost engagement." }
+    ]
+  },
+  "homeServices": {
+    "items": [
+      {
+        "title": "WhatsApp AI Agents",
+        "desc": "Smart solutions for managing sales, customer service, and automated follow-up via WhatsApp."
+      },
+      {
+        "title": "Business-centered AI Agents",
+        "desc": "AI agents to support internal teams and improve business performance."
+      },
+      {
+        "title": "Creative AI Studio",
+        "desc": "Produce high-quality content using AI at a fraction of the cost and time, with a custom dashboard to track every post."
+      }
     ]
   }
 }

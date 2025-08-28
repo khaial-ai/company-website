@@ -1,6 +1,6 @@
  'use client';
  
- import { PropsWithChildren, useMemo } from "react";
+ import { PropsWithChildren, useMemo, useEffect } from "react";
  import i18next, { i18n as I18nInstance } from "i18next";
  import { initReactI18next, I18nextProvider } from "react-i18next";
  import enCommon from "@/../public/locales/en/common.json";
@@ -23,6 +23,12 @@
      return instance;
    }, [locale]);
  
+   useEffect(() => {
+     const html = document.documentElement;
+     html.lang = locale === 'ar' ? 'ar' : 'en';
+     html.dir = locale === 'ar' ? 'rtl' : 'ltr';
+   }, [locale]);
+ 
    return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
  }
-
+ 

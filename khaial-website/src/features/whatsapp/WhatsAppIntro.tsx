@@ -39,12 +39,13 @@ const LogoMarquee = ({ isRTL }: { isRTL: boolean }) => {
 	}, [isRTL]);
 
 	const logos = [
-		"/assets/logos/logo.png",
-		"/assets/logos/logo.png",
-		"/assets/logos/logo.png",
-		"/assets/logos/logo.png",
-		"/assets/logos/logo.png",
-		"/assets/logos/logo.png",
+		"/assets/icons/whatsapp-svgrepo-com.svg",
+		"/assets/icons/meta-logo-facebook-svgrepo-com.svg",
+		"/assets/icons/google-drive-svgrepo-com.svg",
+		"/assets/icons/shopify-svgrepo-com.svg",
+		"/assets/icons/zap-svgrepo-com.svg",
+		"/assets/icons/ssl.png",
+		"/assets/icons/compliance.png",
 	];
 
 	return (
@@ -52,7 +53,7 @@ const LogoMarquee = ({ isRTL }: { isRTL: boolean }) => {
 			<div ref={innerRef} className="flex items-center gap-8 px-6 py-4 will-change-transform" aria-hidden>
 				{[...logos, ...logos].map((src, idx) => (
 					<div key={idx} className="shrink-0 opacity-70 transition-opacity hover:opacity-100">
-						<Image src={src} alt="Logo" width={96} height={28} className="h-6 w-24 object-contain" />
+						<Image src={src} alt="Logo" width={96} height={28} className="h-6 w-24 object-contain invert-[.85] brightness-200" />
 					</div>
 				))}
 			</div>

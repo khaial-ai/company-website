@@ -56,18 +56,18 @@ const Hero = ({
         </p>
 
         {/* CTAs */}
-        <div className="mt-10 flex items-center justify-center gap-4">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <Link
             href={`${localePrefix}${ctaPrimaryHref}`}
             aria-label={t("hero.cta_primary") as string}
-            className="rounded-2xl border border-[var(--k-border)]/60 bg-white text-black px-6 py-3 text-sm md:text-base font-medium shadow-sm hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="inline-flex items-center justify-center text-center rounded-2xl border border-[var(--k-border)]/60 bg-white text-black px-6 py-3 text-sm md:text-base font-medium shadow-sm hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/20"
           >
             {t("hero.cta_primary")}
           </Link>
           <Link
             href={`${localePrefix}${ctaSecondaryHref}`}
             aria-label={t("hero.cta_secondary") as string}
-            className="btn-brand-gradient rounded-2xl px-6 py-3 text-sm md:text-base font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] focus:outline-none focus:ring-2 ring-brand"
+            className="inline-flex items-center justify-center text-center btn-brand-gradient rounded-2xl px-6 py-3 text-sm md:text-base font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] focus:outline-none focus:ring-2 ring-brand"
           >
             {t("hero.cta_secondary")}
           </Link>
