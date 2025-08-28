@@ -81,12 +81,12 @@ const WhatsAppIntro = () => {
 				</h1>
 
 				{/* Subheading */}
-				<p className="mx-auto mt-5 max-w-3xl text-center text-base text-white/75 md:text-lg">
+				<p className="mx-auto mt-7 md:mt-8 max-w-3xl text-center text-base text-white/75 md:text-lg">
 					{t("whatsappIntro.subtitle")}
 				</p>
 
 				{/* Primary CTA */}
-				<div className={`mx-auto mt-6 flex w-fit ${isRTL ? "flex-row-reverse" : ""}`}>
+				<div className={`mx-auto mt-8 md:mt-10 flex w-fit ${isRTL ? "flex-row-reverse" : ""}`}>
 					<button
 						type="button"
 						onClick={handleBook}
@@ -97,8 +97,36 @@ const WhatsAppIntro = () => {
 					</button>
 				</div>
 
+				{/* Trust badges */}
+				<ul className={`mx-auto mt-6 md:mt-8 flex w-full max-w-4xl flex-wrap items-center justify-center gap-x-4 gap-y-2 ${isRTL ? "[direction:rtl]" : ""}`} aria-label={t("whatsappIntro.trust_aria")}>
+						<li className="inline-flex items-center gap-2 text-xs text-white/75">
+							<span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10 ring-1 ring-white/15" aria-hidden>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+									<path d="M3 7a2 2 0 012-2h14a2 2 0 012 2H3zm18 2H3v8a2 2 0 002 2h14a2 2 0 002-2V9zm-4 4h2v2h-2v-2z" />
+								</svg>
+							</span>
+							<span>{t("whatsappIntro.trust_no_cc")}</span>
+						</li>
+						<li className="inline-flex items-center gap-2 text-xs text-white/75">
+							<span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10 ring-1 ring-white/15" aria-hidden>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+									<path d="M12 10.586l4.95-4.95 1.414 1.414L13.414 12l4.95 4.95-1.414 1.414L12 13.414l-4.95 4.95-1.414-1.414L10.586 12 5.636 7.05l1.414-1.414L12 10.586z" />
+								</svg>
+							</span>
+							<span>{t("whatsappIntro.trust_cancel_anytime")}</span>
+						</li>
+						<li className="inline-flex items-center gap-2 text-xs text-white/75">
+							<span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-white/10 ring-1 ring-white/15" aria-hidden>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+									<path d="M12 2l2.5 5L20 8l-4 3 .9 5L12 14l-4.9 2L8 11 4 8l5.5-1L12 2z" />
+								</svg>
+							</span>
+							<span>{t("whatsappIntro.trust_free_trial")}</span>
+						</li>
+				</ul>
+
 				{/* Video showcase */}
-				<div className="mt-12 md:mt-16">
+				<div id="demo" className="mt-16 md:mt-20 scroll-mt-24">
 					<OptimizedVideo src="/assets/misc/VSL.mp4" ariaLabel={t("whatsappIntro.video_aria")} poster="/assets/bg/hero-bg.png" />
 				</div>
 

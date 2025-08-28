@@ -155,7 +155,11 @@
     "video_aria": "Introductory video about WhatsApp AI agents",
     "cta_label": "Book a Free Demo",
     "social_proof_aria": "Trusted by leading businesses",
-    "testimonial_quote": "Closed 3x more deals after switching to WhatsApp AI Agent"
+    "testimonial_quote": "Closed 3x more deals after switching to WhatsApp AI Agent",
+    "trust_aria": "Trust badges",
+    "trust_no_cc": "No credit card required",
+    "trust_cancel_anytime": "Cancel anytime",
+    "trust_free_trial": "Free trial available"
   },
   "whatsappRevenue": {
     "pill": "About Khaial",
@@ -203,6 +207,45 @@
     "privacy_desc": "We respect your privacy and are committed to protecting your personal data. This document will be updated later.",
     "terms_title": "Terms and Conditions",
     "terms_desc": "Detailed terms and conditions will be provided later."
+  },
+  "whatsappBenefits": {
+    "aria": "Core benefits",
+    "pill": "Benefits",
+    "heading": "What's in it for you?",
+    "subtitle": "Benefit-driven outcomes focused on customer results, not feature lists.",
+    "items": [
+      {
+        "title": "Close More Sales",
+        "desc": "AI sales agents engage leads instantly, qualify prospects, and drive revenue."
+      },
+      {
+        "title": "Delight Customers 24/7",
+        "desc": "Provide instant answers and real-time support without adding new team members."
+      },
+      {
+        "title": "Never Lose a Lead Again",
+        "desc": "Automated follow-ups and re-engagement keep conversations alive until they convert."
+      },
+      {
+        "title": "Seamless Integration",
+        "desc": "Connect WhatsApp with your CRM, website, or sheets — no tech hassle."
+      }
+    ]
+  },
+  "whatsappServices": {
+    "aria": "Services",
+    "pill": "Services",
+    "heading": "How can we help you?",
+    "subtitle": "Seven core offerings with quick one‑liners and a demo CTA.",
+    "cta": "See it in action",
+    "items": [
+      { "title": "WhatsApp Sales Agent", "desc": "Engages leads, qualifies prospects, and moves deals forward automatically." },
+      { "title": "Customer Support Bot", "desc": "Instant answers and live-like support around the clock without hiring." },
+      { "title": "Follow-up & Re-engagement", "desc": "Smart nudges keep conversations alive until they convert." },
+      { "title": "Appointment & Order Tracking", "desc": "Instant bookings and seamless order tracking inside WhatsApp." },
+      { "title": "Smart Auto Replies (FAQ & Triggers)", "desc": "Automated FAQs and context-aware triggers that resolve questions fast." },
+      { "title": "Campaigns & Smart Broadcasts", "desc": "Targeted messages sent at the perfect time to boost engagement." }
+    ]
   }
 }
 
