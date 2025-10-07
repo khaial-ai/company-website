@@ -53,12 +53,9 @@ const AnimatedText = ({ text, transitionStartIndex = 0 }: AnimatedTextProps) => 
   const total = characters.length;
   const step = 1 / Math.max(total, 1);
 
-  let currentIndex = -1;
-
   return (
     <p ref={ref} className="mx-auto max-w-5xl text-center text-2xl font-normal leading-[1.4] text-white/30 sm:text-3xl md:text-4xl lg:text-5xl">
       {characters.map((char, idx) => {
-        currentIndex = idx;
         if (char === "\n") {
           return <br key={`br-${idx}`} />;
         }

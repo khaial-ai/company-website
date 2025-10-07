@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import Pill from "@components/atoms/Pill";
 

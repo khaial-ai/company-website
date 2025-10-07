@@ -2,7 +2,6 @@
 
 import { useTranslation } from "react-i18next";
 import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
 import { BOOK_APPOINTMENT_URL } from "@config/links";
 
 export type CTASectionProps = {

@@ -1,7 +1,7 @@
 'use client';
 
 import Layout from "@components/Layout";
-import { WhatsAppIntro, WhatsAppBenefitsSection, WhatsAppServicesSection, WhatsAppFAQSection, WhatsAppCTASection } from "@/features/whatsapp";
+import { WhatsAppIntro, WhatsAppBenefitsSection, WhatsAppServicesSection, WhatsAppFAQSection } from "@/features/whatsapp";
 
 export default function WhatsappPage() {
   return (

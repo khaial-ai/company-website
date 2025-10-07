@@ -53,11 +53,6 @@ const MegaphoneIcon = () => (
   </svg>
 );
 
-const LinkIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden className="h-6 w-6">
-    <path d="M3.9 12a5 5 0 015-5h3v2h-3a3 3 0 100 6h3v2h-3a5 5 0 01-5-5zm6-1h4v2h-4v-2zm5.1-4h-3V5h3a5 5 0 110 10h-3v-2h3a3 3 0 100-6z" />
-  </svg>
-);
 
 const WhatsAppServicesSection = () => {
   const { t } = useTranslation("common");
