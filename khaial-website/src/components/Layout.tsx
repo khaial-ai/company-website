@@ -1,12 +1,11 @@
 "use client";
 import { useParams } from "next/navigation";
 import { PropsWithChildren } from "react";
-import { useTranslation } from "react-i18next";
 import Footer from "@components/organisms/Footer";
 import Navbar from "@components/organisms/Navbar";
 
 const Layout = ({ children }: PropsWithChildren) => {
-  const params = useParams<{ locale: string }>();
+  const { locale } = useParams<{ locale: string }>();
 
   return (
     <div className="min-h-screen flex flex-col">
