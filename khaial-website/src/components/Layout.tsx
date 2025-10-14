@@ -7,7 +7,8 @@ import Navbar from "@components/organisms/Navbar";
 type LayoutProps = PropsWithChildren<{ hideFooter?: boolean }>;
 
 const Layout = ({ children, hideFooter = false }: LayoutProps) => {
-  const { locale } = useParams<{ locale: string }>();
+  // Call useParams to subscribe to locale changes without using the value
+  useParams<{ locale: string }>();
 
   return (
     <div className="min-h-screen flex flex-col">
