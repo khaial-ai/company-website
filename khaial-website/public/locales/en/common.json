@@ -289,6 +289,11 @@
     "title": "Thank You",
     "heading": "Booking confirmed",
     "subtitle": "Your meeting is scheduled. We've emailed the details."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "The page you’re looking for doesn’t exist.",
+    "cta_home": "Back to Home"
   }
 }
 

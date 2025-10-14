@@ -1,4 +1,4 @@
- 'use client';
+ 
  
  import Layout from "@components/Layout";
  import Hero from "@components/organisms/Hero";
@@ -21,5 +21,9 @@
      </Layout>
    );
  }
- 
+
+export async function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "ar" }];
+}
+
  

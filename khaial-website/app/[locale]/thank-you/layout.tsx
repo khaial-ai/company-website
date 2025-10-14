@@ -9,9 +9,9 @@ export default function ThankYouRouteLayout({ children }: { children: React.Reac
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = params;
   const isAr = locale === "ar";
   const dict = isAr ? (arCommon as any) : (enCommon as any);
   const title = dict?.thankYou?.title ?? (isAr ? "شكرًا لك" : "Thank You");

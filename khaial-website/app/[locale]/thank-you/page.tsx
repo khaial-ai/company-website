@@ -15,6 +15,35 @@ export default function ThankYouPage() {
 
   useEffect(() => {
     setIsReady(true);
+
+    if (typeof window !== "undefined") {
+      const w = window as unknown as {
+        fbq?: (...args: unknown[]) => void;
+        gtag?: (...args: unknown[]) => void;
+        snaptr?: (...args: unknown[]) => void;
+        ttq?: { track?: (...args: unknown[]) => void };
+      };
+
+      // Meta (Facebook)
+      if (typeof w.fbq === "function") {
+        w.fbq("track", "Contact");
+      }
+
+      // Snapchat
+      if (typeof w.snaptr === "function") {
+        w.snaptr("track", "SIGN_UP");
+      }
+
+      // TikTok
+      if (w.ttq && typeof w.ttq.track === "function") {
+        w.ttq.track("GenerateLead");
+      }
+
+      // Google Ads
+      if (typeof w.gtag === "function") {
+        w.gtag("event", "conversion", { send_to: "AW-17627519855/MoejCJmaqKgbEO-2utVB" });
+      }
+    }
   }, []);
 
   return (
