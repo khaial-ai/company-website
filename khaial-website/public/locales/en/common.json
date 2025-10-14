@@ -40,7 +40,9 @@
   "social": {
     "twitter": "Twitter (X)",
     "instagram": "Instagram",
-    "youtube": "Youtube"
+    "youtube": "Youtube",
+    "linkedin": "LinkedIn",
+    "tiktok": "TikTok"
   },
   "footer": {
     "navigate": "Navigate",
@@ -282,6 +284,11 @@
         "desc": "Produce high-quality content using AI at a fraction of the cost and time, with a custom dashboard to track every post."
       }
     ]
+  },
+  "thankYou": {
+    "title": "Thank You",
+    "heading": "Booking confirmed",
+    "subtitle": "Your meeting is scheduled. We've emailed the details."
   }
 }
 

@@ -64,7 +64,46 @@ const Footer = () => {
         {/* Bottom legal bar */}
         <div className="border-t border-[var(--k-border)]/50 bg-black/15">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-5 md:flex-row">
-            <p className="text-sm text-white/70">© {new Date().getFullYear()} Khaial AI</p>
+            <div className="flex items-center gap-4">
+              <p className="text-sm text-white/70">© {new Date().getFullYear()} Khaial AI</p>
+              <div className="hidden md:flex items-center gap-3" aria-label={t("footer.social")}>
+                <a
+                  href="https://instagram.com/khaial_ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("social.instagram") as string}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6"/>
+                    <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.6"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://tiktok.com/@khaial.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("social.tiktok") as string}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                    <path d="M15.5 3.5c.7 1.5 2.1 3 4 3.3v3c-1.7-.1-3.3-.7-4.6-1.7v6.2c0 3-2.4 5.4-5.4 5.4S4.1 17.3 4.1 14.3c0-2.7 1.9-5 4.5-5.4v3C7.6 12.2 6.6 13.2 6.6 14.4c0 1.4 1.1 2.5 2.5 2.5s2.5-1.1 2.5-2.5V3.5h3.9z" fill="currentColor"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://youtube.com/@khaialai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("social.youtube") as string}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                    <path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.5 5 12 5 12 5s-6.5 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.5 2 12 2 12s0 3.5.4 4.8c.2.9.9 1.6 1.8 1.8C5.5 19 12 19 12 19s6.5 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.3.4-4.8.4-4.8s0-3.5-.4-4.8zM10 15V9l5 3-5 3z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
             <nav className="flex items-center gap-4" aria-label={t("footer.legal_nav")}>
               {LEGAL_LINKS.map((item, idx) => (
                 <React.Fragment key={item.href}>
