@@ -65,6 +65,7 @@ const WhatsAppIntro = () => {
 	const { t } = useTranslation("common");
 	const params = useParams<{ locale: string }>();
 	const isRTL = params?.locale === "ar";
+	const videoSrc = isRTL ? "/assets/misc/VSL-AR.mp4" : "/assets/misc/VSL-EN.mp4";
 
 	const handleBook = () => {
 		const el = document.getElementById("book-a-call");
@@ -130,7 +131,7 @@ const WhatsAppIntro = () => {
 
 				{/* Video showcase */}
 				<div id="demo" className="mt-16 md:mt-20 scroll-mt-24">
-					<OptimizedVideo src="/assets/misc/VSL.mp4" ariaLabel={t("whatsappIntro.video_aria")} poster="/assets/bg/hero-bg.png" />
+					<OptimizedVideo src={videoSrc} ariaLabel={t("whatsappIntro.video_aria")} poster="/assets/bg/hero-bg.png" />
 				</div>
 
 				{/* Social proof marquee */}

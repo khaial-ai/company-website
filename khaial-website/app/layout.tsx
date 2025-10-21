@@ -1,5 +1,14 @@
 import type { ReactNode } from "react";
 import Script from "next/script";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/assets/logos/logo.png",
+    apple: "/assets/logos/logo.png",
+    shortcut: "/assets/logos/logo.png",
+  },
+};
 
 export default function RootLayout({
   children,
